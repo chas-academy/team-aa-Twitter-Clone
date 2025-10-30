@@ -44,7 +44,7 @@ exports.likeTweet = async (req, res) => {
 };
 
 // Comment on a tweet
-exports.commentOnTweet = async (req, res) => {
+exports.commentTweet = async (req, res) => {
     try {
         const { id } = req.params;
         const { userId, text } = req.body;
