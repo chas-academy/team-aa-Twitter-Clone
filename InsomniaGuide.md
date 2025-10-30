@@ -157,7 +157,7 @@ Expected Response:
   "email": "newemail@example.com",
   "role": "admin"
 }
--------------------------------------------------------------------------
+-----------------------------------------------------
 Delete a User (Admin)
 Method: DELETE
 Endpoint: /api/users/:id
