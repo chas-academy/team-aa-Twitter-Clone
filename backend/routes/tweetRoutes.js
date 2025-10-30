@@ -7,9 +7,11 @@ const {
     commentTweet
 } = require('../controllers/tweetController');
 
-router.post('/', createTweet);
+const authMiddleware = require('../middleware/authMiddleware');
+
+router.post('/', authMiddleware, createTweet);
 router.get('/', getAllTweets);
-router.post('/:id/like', likeTweet);
-router.post('/:id/comment', commentTweet);
+router.post('/:id/like', authMiddleware, likeTweet);
+router.post('/:id/comment', authMiddleware, commentTweet);
 
 module.exports = router;
