@@ -29,6 +29,9 @@ export default function Navbar() {
             <Link to="/dashboard" className="nav-link">
               Dashboard
             </Link>
+            <Link to="/create" className="nav-link primary">
+              Create
+            </Link>
 
             {/* Show only for admins */}
             {user.role === "admin" && (

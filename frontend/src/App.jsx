@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminDashboard from './pages/AdminDashboard';
+import CreateTweet from './pages/CreateTweet';
 import "./styles/App.css";
 
    function App() {
@@ -25,6 +26,15 @@ import "./styles/App.css";
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/create"
+            element={
+              <ProtectedRoute>
+                <CreateTweet />
               </ProtectedRoute>
             }
           />

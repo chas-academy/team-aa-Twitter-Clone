@@ -14,9 +14,9 @@ const CreateTweet = () => {
     if (!content.trim()) return alert("Tweet cannot be empty!");
 
     try {
-      await api.post("/tweets", { userId: user._id, content });
+      await api.post("/tweets", { content });
       setContent("");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.error(error);
       alert("Failed to create tweet.");

@@ -52,3 +52,24 @@
 .tweet-actions button:hover {
   color: #0d8ae8;
 }
+
+/* Polished Like button */
+.like-btn {
+  background: #e8f5fe;
+  color: #1da1f2;
+  border: 1px solid #cde8fb;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.like-btn:hover {
+  background: #d9effd;
+}
+
+.like-btn.liked,
+.like-btn:disabled {
+  background: #1da1f2;
+  color: #fff;
+  border-color: #1da1f2;
+}

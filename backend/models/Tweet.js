@@ -1,4 +1,3 @@
-const { text } = require('express');
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
@@ -12,6 +11,7 @@ const tweetSchema = new mongoose.Schema({
     content: { type: String, required: true},
     createdAt: { type: Date, default: Date.now },
     likes: { type: Number, default: 0 },
+    likedBy: { type: [String], default: [] },
     comments: [commentSchema]
 });
 

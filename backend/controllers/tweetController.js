@@ -3,9 +3,10 @@ const Tweet = require('../models/Tweet');
 // Create a tweet
 exports.createTweet = async (req, res) => {
     try {
-        const { userId, content } = req.body;
+        const { content } = req.body;
+        const userId = req.user?._id;
         if (!userId || !content) {
-            return res.status(400).json({ message: 'User ID and content are required' });
+            return res.status(400).json({ message: 'User ID (from auth) and content are required' });
         }
 
         const tweet = new Tweet({ userId, content });
@@ -30,14 +31,24 @@ exports.getAllTweets = async (req, res) => {
 exports.likeTweet = async (req, res) => {
     try {
         const { id } = req.params;
+        const userId = req.user?._id?.toString();
 
         const tweet = await Tweet.findById(id);
         if (!tweet) return res.status(404).json({ message: 'Tweet not found' });
 
-        tweet.likes += 1;
+        // Ensure likedBy exists
+        tweet.likedBy = tweet.likedBy || [];
+
+        // Prevent multiple likes by the same user
+        if (userId && tweet.likedBy.includes(userId)) {
+            return res.status(400).json({ message: 'You have already liked this tweet', likes: tweet.likes });
+        }
+
+        if (userId) tweet.likedBy.push(userId);
+        tweet.likes = (tweet.likes || 0) + 1;
         await tweet.save();
 
-        res.json({ message: 'Tweet liked', likes: tweet.likes });
+        res.json({ message: 'Tweet liked', likes: tweet.likes, likedBy: tweet.likedBy });
     } catch (error) {
         res.status(500).json({ message: 'Could not like tweet', error });
     }
