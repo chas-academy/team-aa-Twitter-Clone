@@ -1,4 +1,3 @@
-/* Global base styles for the app. Keep minimal; component styles live in /styles */
 :root {
   color-scheme: light dark;
 }
@@ -14,5 +13,3 @@ body {
   background: #fff;
   color: #111;
 }
-
-/* You already import component/page CSS from src/styles */
