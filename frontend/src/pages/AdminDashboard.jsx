@@ -11,7 +11,7 @@ const AdminDashboard = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await API.get("/admin/users");
+      const res = await API.get("/users");
       setUsers(res.data);
     } catch (err) {
       console.error("Failed to fetch users", err);
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await API.delete(`/admin/users/${id}`);
+      await API.delete(`/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (err) {
       console.error("Delete failed", err);

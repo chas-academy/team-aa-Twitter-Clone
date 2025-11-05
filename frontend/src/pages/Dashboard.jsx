@@ -13,7 +13,7 @@ export default function Dashboard() {
     const fetchUsers = async () => {
       try {
         if (user && user.role === 'admin') {
-          const { data } = await api.get('/api/users', {
+          const { data } = await api.get('/users', {
             headers: { Authorization: `Bearer ${user.token}` },
           });
           setUsers(data);
