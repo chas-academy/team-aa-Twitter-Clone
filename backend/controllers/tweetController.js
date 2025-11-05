@@ -90,3 +90,17 @@ exports.searchTweets = async (req, res) => {
         res.status(500).json({ message: 'Could not search tweets', error });
     }
 };
+
+// Delete a tweet (admin only route wired in routes)
+exports.deleteTweet = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const tweet = await Tweet.findById(id);
+        if (!tweet) return res.status(404).json({ message: 'Tweet not found' });
+
+        await tweet.deleteOne();
+        res.json({ message: 'Tweet deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Could not delete tweet', error });
+    }
+};

@@ -2,11 +2,58 @@
   max-width: 1000px;
   margin: 2rem auto;
   padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
 .admin-dashboard h2 {
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li {
+  background: #fafafa;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+}
+
+.admin-dashboard button {
+  background: #e8f5fe;
+  color: #1da1f2;
+  border: 1px solid #cde8fb;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-dashboard button:hover {
+  background: #d9effd;
 }
 
 .admin-users {
