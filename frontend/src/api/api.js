@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+// Use environment variable or fallback to production URL
 const api = axios.create({
-    baseURL: 'https://team-aa-twitter-clone.onrender.com',
+    baseURL: import.meta.env.VITE_API_URL || 'https://team-aa-twitter-clone.onrender.com/api',
     withCredentials: false,
 });
 

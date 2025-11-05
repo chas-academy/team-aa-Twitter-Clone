@@ -82,6 +82,24 @@ Expected Response:
   }
 ]
 -------------------------------------------------------------------------
+4.1 Search Tweets
+Method: GET
+Endpoint: /api/tweets/search?query=your_search_term
+Auth: Not required
+Example: /api/tweets/search?query=hello
+Expected Response:
+[
+  {
+    "_id": "tweet_id_here",
+    "userId": "your_user_id_here",
+    "content": "Hello world! This is my first tweet!",
+    "likes": 0,
+    "comments": [],
+    "createdAt": "2025-10-30T12:34:56Z"
+  }
+]
+Note: Search is case-insensitive and searches within tweet content.
+-------------------------------------------------------------------------
 5. Like a Tweet
 Method: POST
 Endpoint: /api/tweets/:id/like

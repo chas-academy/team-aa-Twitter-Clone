@@ -7,7 +7,7 @@ import Navbar from './components/navbar';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminDashboard from './pages/AdminDashboard';
-import "./styles/app.css";
+import "./styles/App.css";
 
    function App() {
   return (

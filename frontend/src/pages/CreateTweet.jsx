@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import api from "../api/api";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import "../styles/createTweet.css";
+import "../styles/CreateTweet.css";
 
 const CreateTweet = () => {
   const [content, setContent] = useState("");

@@ -4,13 +4,15 @@ const {
     createTweet,
     getAllTweets,
     likeTweet,
-    commentTweet
+    commentTweet,
+    searchTweets
 } = require('../controllers/tweetController');
 
 const authMiddleware = require('../middleware/authMiddleware');
 
 router.post('/', authMiddleware, createTweet);
 router.get('/', getAllTweets);
+router.get('/search', searchTweets);
 router.post('/:id/like', authMiddleware, likeTweet);
 router.post('/:id/comment', authMiddleware, commentTweet);
 

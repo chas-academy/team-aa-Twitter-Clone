@@ -60,3 +60,22 @@ exports.commentTweet = async (req, res) => {
         res.status(500).json({ message: 'Could not comment on tweet', error });
     }
 };
+
+// Search tweets
+exports.searchTweets = async (req, res) => {
+    try {
+        const { query } = req.query;
+        
+        if (!query || query.trim() === '') {
+            return res.status(400).json({ message: 'Search query is required' });
+        }
+
+        const tweets = await Tweet.find({
+            content: { $regex: query, $options: 'i' }
+        }).sort({ createdAt: -1 });
+
+        res.json(tweets);
+    } catch (error) {
+        res.status(500).json({ message: 'Could not search tweets', error });
+    }
+};

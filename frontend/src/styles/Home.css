@@ -11,3 +11,64 @@
 .home-container p {
   color: #555;
 }
+
+.home-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 2px solid #1da1f2;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #0d8bd9;
+}
+
+.search-button,
+.clear-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button {
+  background-color: #1da1f2;
+  color: white;
+}
+
+.search-button:hover {
+  background-color: #0d8bd9;
+}
+
+.clear-button {
+  background-color: #e1e8ed;
+  color: #14171a;
+}
+
+.clear-button:hover {
+  background-color: #ccd6dd;
+}
+
+.search-info {
+  color: #657786;
+  font-style: italic;
+  margin-bottom: 15px;
+}

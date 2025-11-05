@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import api from '../api/api';
-import "../styles/tweetCard.css";
+import "../styles/TweetCard.css";
 
 export default function TweetCard({ tweet }) {
   const [likes, setLikes] = useState(tweet.likes);
