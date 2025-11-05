@@ -1,0 +1,54 @@
+.tweet-card {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  transition: transform 0.1s ease;
+}
+
+.tweet-card:hover {
+  transform: translateY(-2px);
+}
+
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.tweet-author {
+  font-weight: 600;
+  color: #1da1f2;
+}
+
+.tweet-time {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.tweet-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.tweet-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.tweet-actions button {
+  background: none;
+  border: none;
+  color: #1da1f2;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.tweet-actions button:hover {
+  color: #0d8ae8;
+}
