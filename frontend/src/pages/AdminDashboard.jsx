@@ -29,7 +29,7 @@ const AdminDashboard = () => {
       setUsers(res.data);
     } catch (err) {
       console.error("Failed to fetch users", err);
-      setError("Failed to fetch users");
+      setError(err.response?.data?.message || "Failed to fetch users");
     }
   };
 
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
       setTweets(res.data);
     } catch (err) {
       console.error("Failed to fetch tweets", err);
-      setError("Failed to fetch tweets");
+      setError(err.response?.data?.message || "Failed to fetch tweets");
     }
   };
 
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
       setUsers(users.filter((user) => user._id !== id));
     } catch (err) {
       console.error("Delete user failed", err);
-      setError("Delete user failed");
+      setError(err.response?.data?.message || "Delete user failed");
     }
   };
 
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
       setUsers((prev) => prev.map((u) => (u._id === id ? { ...u, role: res.data.user.role } : u)));
     } catch (err) {
       console.error("Update role failed", err);
-      setError("Update role failed");
+      setError(err.response?.data?.message || "Update role failed");
     }
   };
 
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
       setTweets((prev) => prev.filter((t) => t._id !== id));
     } catch (err) {
       console.error("Delete tweet failed", err);
-      setError("Delete tweet failed");
+      setError(err.response?.data?.message || "Delete tweet failed");
     }
   };
 
