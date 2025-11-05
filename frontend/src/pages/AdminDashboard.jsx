@@ -7,6 +7,7 @@ const AdminDashboard = () => {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [newUser, setNewUser] = useState({ username: "", email: "", password: "", role: "user" });
 
   useEffect(() => {
     const load = async () => {
@@ -45,6 +46,7 @@ const AdminDashboard = () => {
 
   const handleDeleteUser = async (id) => {
     try {
+      if (!window.confirm("Delete this user? This cannot be undone.")) return;
       await API.delete(`/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (err) {
@@ -66,11 +68,33 @@ const AdminDashboard = () => {
 
   const handleDeleteTweet = async (id) => {
     try {
+      if (!window.confirm("Delete this tweet? This cannot be undone.")) return;
       await API.delete(`/tweets/${id}`);
       setTweets((prev) => prev.filter((t) => t._id !== id));
     } catch (err) {
       console.error("Delete tweet failed", err);
       setError(err.response?.data?.message || "Delete tweet failed");
+    }
+  };
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const res = await API.post("/users/register", {
+        username: newUser.username,
+        email: newUser.email,
+        password: newUser.password,
+      });
+      // optionally update role if admin chosen
+      if (newUser.role !== "user") {
+        await API.put(`/users/${res.data._id}`, { role: newUser.role });
+      }
+      await fetchUsers();
+      setNewUser({ username: "", email: "", password: "", role: "user" });
+    } catch (err) {
+      console.error("Create user failed", err);
+      setError(err.response?.data?.message || "Create user failed");
     }
   };
 
@@ -80,6 +104,39 @@ const AdminDashboard = () => {
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "#e0245e" }}>{error}</p>}
       
+      <h3>Create User</h3>
+      <form onSubmit={handleCreateUser} style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={newUser.username}
+          onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={newUser.email}
+          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={newUser.password}
+          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+          required
+        />
+        <select
+          value={newUser.role}
+          onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+        >
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+        </select>
+        <button type="submit">Create</button>
+      </form>
+
       <h3>Users</h3>
       <ul>
         {users.map((user) => (
