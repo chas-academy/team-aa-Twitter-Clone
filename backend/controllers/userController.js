@@ -18,6 +18,7 @@ exports.registerUser = async (req, res) => {
             _id: user._id,
             username: user.username,
             email: user.email,
+            role: user.role,
             token : generateToken(user._id, user.role)
         });
     } catch (error) {
@@ -36,6 +37,7 @@ exports.loginUser = async (req, res) => {
                 _id: user._id,
                 username: user.username,
                 email: user.email,
+                role: user.role,
                 token: generateToken(user._id, user.role)
             });
         } else {
